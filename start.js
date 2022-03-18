@@ -50,11 +50,13 @@ const main = async () => {
         const body = JSON.parse(await get(`https://api.github.com/repos/${repository}`, { headers }))
         branch = body.default_branch;
     }
+    const actor = process.env.INPUT_ACTOR || process.env.GITHUB_ACTOR
     await exec('bash', [path.join(__dirname, './start.sh')], {
         env: {
             ...process.env,
             INPUT_BRANCH: branch,
             INPUT_REPOSITORY: repository,
+            INPUT_ACTOR: actor
         }
     });
 };

@@ -26,6 +26,9 @@ inputs:
     description: 'Directory to change to before pushing.'
     required: false
     default: '.'
+  actor:
+    description: 'The username to perform the push action.'
+    required: false
 runs:
   using: 'node12'
   main: 'start.js'
